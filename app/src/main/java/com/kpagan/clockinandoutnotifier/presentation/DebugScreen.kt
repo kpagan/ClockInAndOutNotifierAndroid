@@ -31,8 +31,7 @@ fun DebugScreen(viewModel: SettingsViewModel) {
         DebugItem("Longitude", state.longitude)
         DebugItem("Radius", state.radius)
         DebugItem("Silent Mode", state.silentMode.toString())
-        DebugItem("Inside URL", state.insideUrl)
-        DebugItem("Outside URL", state.outsideUrl)
+        DebugItem("URL to open", state.siteUrl)
 
         Spacer(Modifier.height(16.dp))
 

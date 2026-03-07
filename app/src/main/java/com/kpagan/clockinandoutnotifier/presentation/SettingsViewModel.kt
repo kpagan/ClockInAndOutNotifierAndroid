@@ -12,11 +12,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 data class SettingsState(
-    val latitude: String = "37.9838",
-    val longitude: String = "23.7275",
+    val latitude: String = "",
+    val longitude: String = "",
     val radius: String = "150",
-    val insideUrl: String = "https://example.com/inside",
-    val outsideUrl: String = "https://example.com/outside",
+    val siteUrl: String = "",
     val silentMode: Boolean = false
 )
 
@@ -34,8 +33,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
                 latitude = config.latitude.toString(),
                 longitude = config.longitude.toString(),
                 radius = config.radius.toString(),
-                insideUrl = config.insideUrl,
-                outsideUrl = config.outsideUrl,
+                siteUrl = config.siteUrl,
                 silentMode = config.silentMode
             )
         }
@@ -50,6 +48,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
     fun onLatitudeChanged(v: String) { _state.value = _state.value.copy(latitude = v) }
     fun onLongitudeChanged(v: String) { _state.value = _state.value.copy(longitude = v) }
+    fun onUrlChanged(v: String) { _state.value = _state.value.copy(siteUrl = v) }
     fun onRadiusChanged(v: String) { _state.value = _state.value.copy(radius = v) }
     fun onSilentChanged(v: Boolean) { _state.value = _state.value.copy(silentMode = v) }
 
@@ -60,8 +59,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
                 latitude = _state.value.latitude.toDouble(),
                 longitude = _state.value.longitude.toDouble(),
                 radius = _state.value.radius.toFloat(),
-                insideUrl = _state.value.insideUrl,
-                outsideUrl = _state.value.outsideUrl,
+                siteUrl = _state.value.siteUrl,
                 silentMode = _state.value.silentMode
             )
 

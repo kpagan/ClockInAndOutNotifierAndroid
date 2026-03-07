@@ -19,8 +19,7 @@ class PreferencesDataSource(private val context: Context) {
         val LAT = doublePreferencesKey("lat")
         val LNG = doublePreferencesKey("lng")
         val RADIUS = floatPreferencesKey("radius")
-        val INSIDE = stringPreferencesKey("inside")
-        val OUTSIDE = stringPreferencesKey("outside")
+        val SITE_URL = stringPreferencesKey("siteUrl")
         val SILENT = booleanPreferencesKey("silent")
     }
 
@@ -29,8 +28,7 @@ class PreferencesDataSource(private val context: Context) {
             prefs[Keys.LAT] = config.latitude
             prefs[Keys.LNG] = config.longitude
             prefs[Keys.RADIUS] = config.radius
-            prefs[Keys.INSIDE] = config.insideUrl
-            prefs[Keys.OUTSIDE] = config.outsideUrl
+            prefs[Keys.SITE_URL] = config.siteUrl
             prefs[Keys.SILENT] = config.silentMode
         }
     }
@@ -40,8 +38,7 @@ class PreferencesDataSource(private val context: Context) {
             latitude = prefs[Keys.LAT] ?: 0.0,
             longitude = prefs[Keys.LNG] ?: 0.0,
             radius = prefs[Keys.RADIUS] ?: 150f,
-            insideUrl = prefs[Keys.INSIDE] ?: "",
-            outsideUrl = prefs[Keys.OUTSIDE] ?: "",
+            siteUrl = prefs[Keys.SITE_URL] ?: "",
             silentMode = prefs[Keys.SILENT] ?: false
         )
     }

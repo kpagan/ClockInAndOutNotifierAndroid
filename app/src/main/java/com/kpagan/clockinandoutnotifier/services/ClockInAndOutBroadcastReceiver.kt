@@ -1,8 +1,11 @@
 package com.kpagan.clockinandoutnotifier.services
 
+import android.Manifest
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.Geofence
 import com.google.android.gms.location.GeofencingEvent
 import com.kpagan.clockinandoutnotifier.utils.NotificationHelper
@@ -29,12 +32,12 @@ class ClockInAndOutBroadcastReceiver : BroadcastReceiver() {
 
                 Geofence.GEOFENCE_TRANSITION_ENTER -> {
                     NotificationHelper.alert(context, "Entered area")
-                    open(context, config.insideUrl)
+                    open(context, config.siteUrl)
                 }
 
                 Geofence.GEOFENCE_TRANSITION_EXIT -> {
                     NotificationHelper.alert(context, "Exited area")
-                    open(context, config.outsideUrl)
+                    open(context, config.siteUrl)
                 }
             }
         }

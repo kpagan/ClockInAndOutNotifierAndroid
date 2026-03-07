@@ -47,6 +47,12 @@ fun SettingsScreen(viewModel: SettingsViewModel,
             label = { Text("Radius (meters)") }
         )
 
+        OutlinedTextField(
+            value = state.siteUrl,
+            onValueChange = viewModel::onUrlChanged,
+            label = { Text("Url to open") }
+        )
+
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text("Silent mode")
             Spacer(Modifier.width(8.dp))
