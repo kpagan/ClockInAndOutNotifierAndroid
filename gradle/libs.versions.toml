@@ -12,10 +12,11 @@ lifecycle-viewmodel-compose = "2.10.0"
 play-services-location = "21.3.0"
 work-runtime-ktx = "2.11.1"
 datastore-preferences = "1.2.0"
-maps-compose = "8.1.0"
+maps-compose = "8.2.0"
 play-services-maps = "20.0.0"
 navigation-compose = "2.9.7"
 kotlin = "2.3.10"
+secrets-gradle-plugin = "2.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -37,4 +38,4 @@ navigation-compose = { group = "androidx.navigation", name = "navigation-compose
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
+secrets-gradle-plugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secrets-gradle-plugin" }
