@@ -1,11 +1,9 @@
 package com.kpagan.clockinandoutnotifier.services
 
-import android.Manifest
+import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.Geofence
 import com.google.android.gms.location.GeofencingEvent
 import com.kpagan.clockinandoutnotifier.utils.NotificationHelper
@@ -28,24 +26,27 @@ class ClockInAndOutBroadcastReceiver : BroadcastReceiver() {
 
             val config = repo.getConfig()
 
+            val browserIntent = Intent(Intent.ACTION_VIEW, config.siteUrl.toUri()).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            }
+
+            val pendingIntent = PendingIntent.getActivity(
+                context,
+                0,
+                browserIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+
             when (event.geofenceTransition) {
 
                 Geofence.GEOFENCE_TRANSITION_ENTER -> {
-                    NotificationHelper.alert(context, "Entered area")
-                    open(context, config.siteUrl)
+                    NotificationHelper.alert(context, "Entered area", pendingIntent)
                 }
 
                 Geofence.GEOFENCE_TRANSITION_EXIT -> {
-                    NotificationHelper.alert(context, "Exited area")
-                    open(context, config.siteUrl)
+                    NotificationHelper.alert(context, "Exited area", pendingIntent)
                 }
             }
         }
-    }
-
-    private fun open(context: Context, url: String) {
-        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        context.startActivity(intent)
     }
 }

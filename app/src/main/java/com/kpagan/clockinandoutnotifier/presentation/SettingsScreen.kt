@@ -27,7 +27,7 @@ fun SettingsScreen(viewModel: SettingsViewModel,
 
     Column(Modifier.padding(16.dp)) {
 
-        Text("Geofence Settings", style = MaterialTheme.typography.headlineMedium)
+        Text("Settings", style = MaterialTheme.typography.headlineMedium)
 
         OutlinedTextField(
             value = state.latitude,
