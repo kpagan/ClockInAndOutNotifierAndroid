@@ -51,17 +51,12 @@ class MainActivity : AppCompatActivity() {
                         composable("settings") {
                             SettingsScreen(
                                 viewModel = viewModel,
-                                openMap = { navController.navigate("map") },
-                                openDebug = { navController.navigate("debug") }
+                                openMap = { navController.navigate("map") }
                             )
                         }
 
                         composable("map") {
                             MapPickerScreen(viewModel)
-                        }
-
-                        composable("debug") {
-                            DebugScreen(viewModel)
                         }
                     }
                 }
