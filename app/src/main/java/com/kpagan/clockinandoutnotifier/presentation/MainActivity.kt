@@ -56,7 +56,10 @@ class MainActivity : AppCompatActivity() {
                         }
 
                         composable("map") {
-                            MapPickerScreen(viewModel)
+                            MapPickerScreen(
+                                viewModel = viewModel,
+                                onLocationSelected = { navController.popBackStack() }
+                            )
                         }
                     }
                 }

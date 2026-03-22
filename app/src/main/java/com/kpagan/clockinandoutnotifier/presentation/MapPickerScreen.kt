@@ -27,7 +27,10 @@ import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
 
 @Composable
-fun MapPickerScreen(viewModel: SettingsViewModel) {
+fun MapPickerScreen(
+    viewModel: SettingsViewModel,
+    onLocationSelected: () -> Unit
+) {
 
     val state by viewModel.state.collectAsState()
     val context = LocalContext.current
@@ -82,7 +85,10 @@ fun MapPickerScreen(viewModel: SettingsViewModel) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            onClick = { viewModel.save() }
+            onClick = {
+                viewModel.save()
+                onLocationSelected()
+            }
         ) {
             Text("Use This Location")
         }
